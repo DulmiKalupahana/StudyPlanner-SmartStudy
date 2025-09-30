@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#E1DCF8</color>   <!-- app background -->
+    <color name="colorSecondary">#FFFFFF</color> <!-- cards/sections -->
+    <color name="colorAccent">#4949C6</color>    <!-- buttons/links -->
+
+    <!-- text / strokes -->
+    <color name="textPrimary">#232336</color>
+    <color name="textSecondary">#505050</color>
+    <color name="lineSoft">#E4E4FF</color>
+
+</resources>
+

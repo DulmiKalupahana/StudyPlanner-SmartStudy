@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottomNav"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Header  -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/calendar"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:textColor="@color/textPrimary" />
+
+            <!--  Calendar Card  -->
+            <LinearLayout
+                android:id="@+id/cardCalendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Month header + arrows -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnPrev"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:gravity="center"
+                        android:text="‹"
+                        android:textSize="18sp"
+                        android:textColor="@color/textPrimary"
+                        android:background="@drawable/bg_day" />
+
+                    <TextView
+                        android:id="@+id/tvMonth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="January 2025"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:textColor="@color/textPrimary" />
+
+                    <TextView
+                        android:id="@+id/btnNext"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:gravity="center"
+                        android:text="›"
+                        android:textSize="18sp"
+                        android:textColor="@color/textPrimary"
+                        android:background="@drawable/bg_day" />
+                </LinearLayout>
+
+                <!-- Week names -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    android:weightSum="7">
+
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+                        android:gravity="center" android:text="S" android:textSize="12sp" android:textColor="@color/textSecondary"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+                        android:gravity="center" android:text="M" android:textSize="12sp" android:textColor="@color/textSecondary"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+                        android:gravity="center" android:text="T" android:textSize="12sp" android:textColor="@color/textSecondary"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+                        android:gravity="center" android:text="W" android:textSize="12sp" android:textColor="@color/textSecondary"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+                        android:gravity="center" android:text="T" android:textSize="12sp" android:textColor="@color/textSecondary"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+                        android:gravity="center" android:text="F" android:textSize="12sp" android:textColor="@color/textSecondary"/>
+                    <TextView android:layout_width="0dp" android:layout_height="36dp" android:layout_weight="1"
+                        android:gravity="center" android:text="S" android:textSize="12sp" android:textColor="@color/textSecondary"/>
+                </LinearLayout>
+
+                <!-- Days grid (42 cells) -->
+                <GridLayout
+                    android:id="@+id/gridDays"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:columnCount="7">
+
+                    <!-- Fillers (prev month) -->
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" />
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" />
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1" />
+
+
+
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="1"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="2"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="3"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="4"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="5"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="6"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="7"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+
+
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="8"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="9"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="10"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="11"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="12"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="13"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="14"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="15"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="16"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="17"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="18"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="19"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="20"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="21"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+
+
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="22"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="23"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <!-- Selected example (24) with tiny event dot -->
+                        <TextView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_gravity="center"
+                            android:background="@drawable/bg_day_selected"
+                            android:gravity="center"
+                            android:text="24"
+                            android:textColor="@color/colorAccent"
+                            android:textStyle="bold" />
+                        <View android:layout_width="6dp" android:layout_height="6dp"
+                            android:layout_gravity="bottom|center_horizontal" android:layout_marginBottom="6dp"
+                            android:background="@drawable/dot_event"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="25"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="26"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="27"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="28"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+
+                    <!-- 29 - 31 -->
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="29"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="30"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1">
+                        <TextView  android:layout_width="36dp" android:layout_height="36dp"
+                            android:layout_gravity="center" android:gravity="center" android:text="31"
+                            android:textColor="@color/textPrimary" android:background="@drawable/bg_day_state"/>
+                    </FrameLayout>
+
+                    <!-- Fillers (next month) to complete 42 -->
+                    <FrameLayout android:layout_width="0dp" android:layout_height="64dp" android:layout_columnWeight="1"/>
+
+                </GridLayout>
+
+                <!-- Tiny footer (right aligned) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="end">
+                    <TextView
+                        android:id="@+id/tvDone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Done 1/3"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        <!-- - Tasks Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tasks"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/textPrimary"/>
+
+            <TextView
+                android:id="@+id/tvUploaded"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Uploaded"
+                android:textSize="12sp"
+                android:textColor="@color/textSecondary"/>
+        </LinearLayout>
+
+        <!-- Task 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_card"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Task1"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/textPrimary"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⏲ 30 min"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Uploaded"
+                android:textSize="13sp"
+                android:textColor="@color/textSecondary"/>
+        </LinearLayout>
+
+        <!-- Task 2 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_card"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Task2"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/textPrimary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="⏲ 60 min"
+                    android:textSize="12sp"
+                    android:textColor="@color/textSecondary"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To do"
+                android:textSize="13sp"
+                android:textColor="@color/textSecondary"/>
+        </LinearLayout>
+
+        <!-- Task 3 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_card"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Task3"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/textPrimary"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="⏲ 40 min"
+                    android:textSize="12sp"
+                    android:textColor="@color/textSecondary"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="To do"
+                android:textSize="13sp"
+                android:textColor="@color/textSecondary"/>
+        </LinearLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="100dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignParentBottom="true"
+        android:padding="8dp"
+        android:background="@drawable/bg_card"
+        app:menu="@menu/menu_bottom_nav"
+        app:labelVisibilityMode="unlabeled"
+        app:itemBackground="@android:color/transparent"
+        app:itemIconTint="@color/colorAccent"
+        app:itemRippleColor="@android:color/transparent" />
+
+</RelativeLayout>
+
+
