@@ -4,8 +4,6 @@ Concise, modern study planner built in Kotlin for Android. This README focuses o
 
 ---
 
-[![Kotlin](https://img.shields.io/badge/Kotlin-100%25-blue.svg)](#) [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey.svg)](#)
-
 ## Product overview (Web-style description)
 
 SmartStudy is a focused productivity app that helps students plan, track, and optimize study time. Imagine a web landing page or product page describing SmartStudy:
